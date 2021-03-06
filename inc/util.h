@@ -36,6 +36,7 @@ public:
             cout << current->val << (current->next ? " > " : "");
             current = current->next;
         }
+        cout << endl;
     }
 
     static ListNode *createListNode(vector<int> v)
@@ -60,5 +61,17 @@ public:
             }
         }
         return node;
+    }
+
+    static void printBool(bool b)
+    {
+        if (b)
+        {
+            cout << "true" << endl;
+        }
+        else
+        {
+            cout << "false" << endl;
+        }
     }
 };
