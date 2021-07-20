@@ -1,0 +1,3 @@
+#!/bin/bash
+mkdir -p $(date +%Y-%m-%d)
+cd $(date +%Y-%m-%d)
