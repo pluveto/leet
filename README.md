@@ -10,4 +10,6 @@ Create folder for today:
 
 ```shell
 mkdir $(date +%Y%m%d) && cd $_
-```# leet
+# or:
+. ./newday
+```
