@@ -21,10 +21,11 @@ int sum(int n)
     1146:	83 e8 01             	sub    $0x1,%eax
     1149:	89 c7                	mov    %eax,%edi
     114b:	e8 d5 ff ff ff       	callq  1125 <sum>
+ret_addr_0x1f：
     1150:	89 45 f8             	mov    %eax,-0x8(%rbp)
     int c = a + b;
     1153:	8b 55 fc             	mov    -0x4(%rbp),%edx
-    1156:	8b 45 f8             	mov    -0x8(%rbp),%eax
+    1156:	8b 45 f8             	mov    -0x8(%rbp),%eax // eax = pop(stk,"eax");
     1159:	01 d0                	add    %edx,%eax
     115b:	89 45 f4             	mov    %eax,-0xc(%rbp)
     return c;
