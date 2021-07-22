@@ -24,13 +24,13 @@ private:
         {
             return;
         }
-        ret.push_back(root->val);
         _process(root->left, ret);
+        ret.push_back(root->val);        
         _process(root->right, ret);
     }
 
 public:
-    vector<int> preorderTraversal2(TreeNode *root)
+    vector<int> inorderTraversal(TreeNode *root)
     {
         vector<int> ret;
         _process(root, ret);

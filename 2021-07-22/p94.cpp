@@ -18,22 +18,45 @@ struct TreeNode
 class Solution
 {
 private:
-    void _process(TreeNode *root, vector<int> &ret)
+    void _process(TreeNode *root, vector<int> &ret, stack<TreeNode *> &callstack)
     {
-        if (root == nullptr)
+        while (!(root == nullptr && callstack.empty()))
         {
-            return;
+            if (root != nullptr)
+            {
+                callstack.push(root);
+                root = root->left;
+            }
+            else if (!callstack.empty())
+            {
+                root = callstack.top();
+                callstack.pop();
+                ret.push_back(root->val);
+                root = root->right;
+            }
         }
-        ret.push_back(root->val);
-        _process(root->left, ret);
-        _process(root->right, ret);
     }
 
 public:
-    vector<int> preorderTraversal2(TreeNode *root)
+    vector<int> inorderTraversal(TreeNode *root)
     {
         vector<int> ret;
-        _process(root, ret);
+        stack<TreeNode *> stack;
+        while (!(root == nullptr && stack.empty()))
+        {
+            if (root != nullptr)
+            {
+                stack.push(root);
+                root = root->left;
+            }
+            else if (!stack.empty())
+            {
+                root = stack.top();
+                stack.pop();
+                ret.push_back(root->val);
+                root = root->right;
+            }
+        }
         return ret;
     }
     vector<int> preorderTraversal(TreeNode *root)
@@ -96,7 +119,7 @@ int main(int argc, char const *argv[])
     );
 
     Solution s;
-    auto r = s.preorderTraversal(t);
+    auto r = s.inorderTraversal(t);
     _print_vec(r);
     return 0;
 }
