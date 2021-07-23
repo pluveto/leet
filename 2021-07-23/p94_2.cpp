@@ -41,48 +41,34 @@ TreeNode *pop(std::stack<TreeNode *> &s)
     printf("%d ->\n", top->val);
     return top;
 }
-
+/* 
+while (curr != NULL)
+            {
+                push(s, curr);
+                curr = curr->left;
+            }
+            curr = pop(s);
+            ret.push_back(curr->val);
+            curr = curr->right; */
 class Solution
 {
-private:
-    void _process(TreeNode *root, vector<int> &ret)
-    {
-        stack<TreeNode *> stack;
-        unordered_map<TreeNode *, bool> history;
-
-        TreeNode *cur = root;
-        push(stack, cur);
-        while (!stack.empty())
-        {
-            cur = pop(stack);
-            if (cur->left && !history[cur->left])
-            {
-                push(stack, cur);
-                cur = cur->left;
-                push(stack, cur);
-                continue;
-            }
-            if (cur->right && !history[cur->right])
-            {
-                //printf("out: %d\n", cur->val);
-                ret.push_back(cur->val);
-                history[cur] = true;
-
-                cur = cur->right;
-                push(stack, cur);
-                continue;
-            }
-            //printf("out: %d\n", cur->val);
-            ret.push_back(cur->val);
-            history[cur] = true;
-        }
-    }
-
 public:
     vector<int> inorderTraversal(TreeNode *root)
     {
         vector<int> ret;
-        _process(root, ret);
+        stack<TreeNode *> s;
+        TreeNode *curr = root;
+        while (curr || !s.empty())
+        {
+            while (curr)
+            {
+                push(s, curr);
+                curr = curr->left;
+            }
+            curr = pop(s);
+            ret.push_back(curr->val);
+            curr = curr->right;
+        }
         return ret;
     }
 };
