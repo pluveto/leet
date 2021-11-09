@@ -10,7 +10,7 @@ fi
 
 outputBinaryFileName=`basename $1 .cpp`'.out'
 
-g++ $1 -o $outputBinaryFileName -std=c++11 -I ~/leet/inc
+g++ $1 -o $outputBinaryFileName -std=c++11 -I ~/leet/inc -c
 
 if [ $? -ne 0 ];then
     echo -e "\033[31mCompilation error!\033[0m"
