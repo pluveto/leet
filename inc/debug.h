@@ -4,6 +4,7 @@
 #include <stack>
 #include <stdarg.h>
 #include <stdio.h>
+#include <queue>
 #include <climits>
 #include <vector>
 
@@ -48,3 +49,4 @@ void print_vec_part(std::vector<int> &vec, int from, int to) {
   printf("%d", vec[to - 1]);
   printf("}\n");
 }
+
