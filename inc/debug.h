@@ -1,11 +1,11 @@
 #include <algorithm>
+#include <climits>
 #include <iostream>
 #include <iterator>
+#include <queue>
 #include <stack>
 #include <stdarg.h>
 #include <stdio.h>
-#include <queue>
-#include <climits>
 #include <vector>
 
 using namespace std;
@@ -37,6 +37,30 @@ void print_vec(std::vector<int> &vec) {
   printf("}\n");
 }
 
+void print_indent(int count, char c = ' ') {
+  for (int i = 0; i < count; i++) {
+    cout << c;
+  }
+}
+
+void print_vec_2d(std::vector<std::vector<int>> &vec, int indent = 0) {
+  if (vec.size() == 0) {
+    print_indent(indent);
+    printf("{}\n");
+    return;
+  }
+  print_indent(indent);
+  printf("{\n");
+  for (size_t i = 0; i < vec.size(); i++) {
+    printf("  ");
+    print_indent(indent);
+    print_vec(vec[i]);
+  }
+  print_indent(indent);
+
+  printf("}\n");
+}
+
 void print_vec_part(std::vector<int> &vec, int from, int to) {
   if (vec.size() == 0 || from == to) {
     printf("{}\n");
@@ -49,4 +73,3 @@ void print_vec_part(std::vector<int> &vec, int from, int to) {
   printf("%d", vec[to - 1]);
   printf("}\n");
 }
-
