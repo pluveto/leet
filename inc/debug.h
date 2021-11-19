@@ -1,11 +1,12 @@
 #include <algorithm>
 #include <climits>
+#include <cstdarg>
+#include <cstdio>
 #include <iostream>
 #include <iterator>
 #include <queue>
+#include <set>
 #include <stack>
-#include <stdarg.h>
-#include <stdio.h>
 #include <vector>
 
 using namespace std;
@@ -23,17 +24,16 @@ void _swap(std::vector<int> &vec, size_t from_i, size_t to_i) {
   vec[from_i] = vec[to_i];
   vec[to_i] = tmp;
 }
-
-void print_vec(std::vector<int> &vec) {
+template <typename T> void print_vec(std::vector<T> &vec) {
   if (vec.size() == 0) {
     printf("{}\n");
     return;
   }
   printf("{");
   for (size_t i = 0; i < vec.size() - 1; i++) {
-    printf("%d, ", vec[i]);
+    cout << vec[i] << ", ";
   }
-  printf("%d", vec[vec.size() - 1]);
+  cout << vec[vec.size() - 1];
   printf("}\n");
 }
 
