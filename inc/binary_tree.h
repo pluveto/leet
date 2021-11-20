@@ -29,11 +29,6 @@ TreeNode *create_tree(vector<int> v, int i = 0) {
   return current;
 }
 
-void print_indent(int n) {
-  for (int i = 0; i < n; i++) {
-    printf(" ");
-  }
-}
 
 // void print_tree(TreeNode *t, int ind = 0) {
 //   print_indent(ind);
