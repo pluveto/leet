@@ -1,0 +1,256 @@
+#include <arpa/inet.h>
+#include <sys/epoll.h>
+#include <unistd.h>
+#include <csignal>
+#include <cstring>
+#include <iostream>
+#include <string>
+
+namespace lb {
+
+class cli_options {
+ private:
+  // IPv4 Address
+  std::string address_;
+  u_int16_t port_;
+
+ public:
+  cli_options(const std::string& address, const u_int16_t& port)
+      : address_(address), port_(port) {}
+  const std::string& address() const { return address_; }
+  u_int16_t port() const { return port_; }
+};
+
+class server {
+ private:
+  static server* instance_;
+  static constexpr int max_events = 1024;
+  lb::cli_options options_;
+  int epoll_fd_;
+
+ public:
+  server(const lb::cli_options& options) : options_(options) {
+    instance_ = this;
+  }
+  void run();
+  // signal handler
+  static void handle_signal(int signo);
+};
+
+}  // namespace lb
+
+lb::server* lb::server::instance_ = nullptr;
+
+lb::cli_options init_args(int argc, char const* const argv[]) {
+  std::string address = "0.0.0.0";
+  u_int16_t port = 8080;
+  const char* usage = "usage: lb_server [--address=<address>] [--port=<port>]";
+  const char* address_opt = "--address";
+  const char* port_opt = "--port";
+  for (int i = 1; i < argc; i++) {
+    if (std::strcmp(argv[i], address_opt) == 0) {
+      if (i + 1 < argc) {
+        address = argv[i + 1];
+      } else {
+        std::cerr << usage << std::endl;
+        exit(1);
+      }
+    } else if (std::strcmp(argv[i], port_opt) == 0) {
+      if (i + 1 < argc) {
+        port = atoi(argv[i + 1]);
+      } else {
+        std::cerr << usage << std::endl;
+        exit(1);
+      }
+    } else {
+      std::cerr << usage << std::endl;
+      exit(1);
+    }
+  }
+  lb::cli_options options(address, port);
+  return options;
+}
+
+void lb::server::handle_signal(int signo) {
+  if (signo == SIGINT) {
+    std::cout << "server is shutting down..." << std::endl;
+    auto instance = lb::server::instance_;
+    close(instance->epoll_fd_);
+    exit(0);
+  }
+}
+
+void lb::server::run() {
+  // 初始化信号处理函数
+  struct sigaction sa;
+  sa.sa_handler = lb::server::handle_signal;
+  sigemptyset(&sa.sa_mask);
+  sa.sa_flags = 0;
+  sigaction(SIGINT, &sa, NULL);
+
+  // 初始化地址
+  in_addr_t addr = inet_addr(options_.address().c_str());
+  if (addr == INADDR_NONE) {
+    std::cerr << "invalid address" << std::endl;
+    exit(1);
+  }
+  sockaddr_in addr_in;
+  addr_in.sin_family = AF_INET;
+  addr_in.sin_port = htons(options_.port());
+  addr_in.sin_addr.s_addr = addr;
+
+  // 初始化 socket_fd，并进行 bind 和 listen
+  auto listen_fd = socket(AF_INET, SOCK_STREAM, 0);
+  if (listen_fd == -1) {
+    std::cerr << "socket error" << std::endl;
+    exit(1);
+  }
+  int opt = 1;
+  setsockopt(listen_fd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
+
+  int ret;
+  ret = bind(listen_fd, (sockaddr*)&addr_in, sizeof(addr_in));
+  if (ret == -1) {
+    std::cerr << "bind error: " << strerror(errno) << std::endl;
+    exit(1);
+  }
+  ret = listen(listen_fd, SOMAXCONN);
+  if (ret == -1) {
+    std::cerr << "listen error" << std::endl;
+    exit(1);
+  }
+
+  std::cout << "server is listening on " << options_.address() << ":"
+            << options_.port() << std::endl;
+
+  // 初始化 epoll
+
+  epoll_fd_ = epoll_create(max_events);
+  if (epoll_fd_ == -1) {
+    std::cerr << "epoll_create error" << std::endl;
+    exit(1);
+  }
+
+  epoll_event event;
+  event.data.fd = listen_fd;
+  event.events = EPOLLIN | EPOLLET;
+
+  ret = epoll_ctl(epoll_fd_, EPOLL_CTL_ADD, listen_fd, &event);
+  if (ret == -1) {
+    std::cerr << "epoll_ctl error when initialize: " << strerror(errno)
+              << std::endl;
+    exit(1);
+  }
+  epoll_event events[max_events];
+
+  // 事件循环，接收到的事件会被放到 events 中
+  while (true) {
+    int n = epoll_wait(epoll_fd_, events, max_events, -1);
+    if (n == -1) {
+      std::cerr << "epoll_wait error" << std::endl;
+      exit(1);
+    }
+    if (n == 0) {
+      std::cout << ".";
+      continue;
+    }
+    // 处理每个事件
+    for (int i = 0; i < n; i++) {
+      // 如果是新连接，则 accept
+      if (events[i].data.fd == listen_fd) {
+        sockaddr_in client_addr;
+        socklen_t client_addr_len = sizeof(client_addr);
+        // 新的连接
+        int client_fd =
+            accept(listen_fd, (sockaddr*)&client_addr, &client_addr_len);
+        if (client_fd == -1) {
+          std::cerr << "accept error" << std::endl;
+          exit(1);
+        }
+        std::cout << "client connected (from "
+                  << inet_ntoa(client_addr.sin_addr) << ":"
+                  << ntohs(client_addr.sin_port) << ")" << std::endl;
+
+        // 将新的 client_fd 添加到 epoll 中
+        event.data.fd = client_fd;
+        // event.events = EPOLLIN ;
+        event.events = EPOLLIN | EPOLLET;
+        ret = epoll_ctl(epoll_fd_, EPOLL_CTL_ADD, client_fd, &event);
+        if (ret == -1) {
+          std::cerr << "epoll_ctl error when add client: " << strerror(errno)
+                    << std::endl;
+          exit(1);
+        }
+        continue;
+      }
+
+      // 处理 EPOLLIN 事件
+      if (!(events[i].events & EPOLLIN)) {
+        continue;
+      }
+
+      // 对于已经连接的 client，如果有数据到来，则读取数据
+      char buf[32];
+      int client_fd = events[i].data.fd;
+      int n = recv(client_fd, buf, sizeof(buf), 0);
+      if (n == -1) {
+        // 查询错误码
+        int err = errno;
+        // 如果是不能立即完成，则继续等待
+        if (err == EAGAIN || err == EWOULDBLOCK) {
+          continue;
+        } else {
+          // 其他错误，关闭连接
+          std::cerr << "recv error" << std::endl;
+          close(client_fd);
+          // 删除 epoll 中的连接
+          epoll_ctl(epoll_fd_, EPOLL_CTL_DEL, client_fd, NULL);
+          // 打印错误信息
+          std::cerr << "recv error when recv: " << strerror(err) << std::endl;
+          continue;
+        }
+      }
+      // 获取 client 的地址，这一步只是为了输出地址
+      sockaddr_in client_addr;
+      socklen_t client_addr_len = sizeof(client_addr);
+      ret = getsockname(client_fd, (sockaddr*)&client_addr, &client_addr_len);
+      if (ret == -1) {
+        std::cerr << "getsockname error" << std::endl;
+        exit(1);
+      }
+
+      // 收到 0 字节的数据，则表示 client 正常地断开连接
+      if (n == 0) {
+        // https://stackoverflow.com/questions/8707601/is-it-necessary-to-deregister-a-socket-from-epoll-before-closing-it
+        std::cout << "client disconnected (from "
+                  << inet_ntoa(client_addr.sin_addr) << ":"
+                  << ntohs(client_addr.sin_port) << ")" << std::endl;
+        close(client_fd);
+        // ret = epoll_ctl(epoll_fd_, EPOLL_CTL_DEL, client_fd, NULL);
+        // if (ret == -1) {
+        // std::cerr << "epoll_ctl error when remove fd: " << strerror(errno) <<
+        // std::endl; exit(1);
+        // }
+      }
+      // 正常收到数据，则打印出来
+      else {
+        // 打印收到的 bytes
+        std::cout << "time: " << time(NULL) << std::endl
+                  << "client addr: " << inet_ntoa(client_addr.sin_addr) << ":"
+                  << ntohs(client_addr.sin_port) << std::endl
+                  << "received " << n << " bytes" << std::endl
+                  << "data: " << std::string(buf, 0, n) << std::endl
+                  << std::endl;
+        // echo back
+        send(client_fd, buf, n, 0);
+      }
+    }
+  }
+}
+
+int main(int argc, char const* argv[]) {
+  auto options = init_args(argc, argv);
+  lb::server server(options);
+  server.run();
+  return 0;
+}

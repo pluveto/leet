@@ -1,0 +1,231 @@
+#include <algorithm>
+#include <functional>
+#include <iostream>
+#include <iterator>
+#include <memory>
+#include <string>
+#include <vector>
+
+struct token_t {
+  int n;
+  std::string to_string() { return std::to_string(n); }
+};
+
+static token_t tok_unk{2};
+
+struct stmt_t {
+  virtual ~stmt_t() {}
+};
+
+struct expr_t {
+  virtual ~expr_t(){};
+};
+
+struct literal_t : public expr_t {
+  virtual ~literal_t() {}
+};
+
+struct literal_id : public literal_t {
+  token_t token{tok_unk};
+
+  literal_id(token_t token) : token(token) {}
+};
+struct literal_number : public literal_t {
+  token_t token{tok_unk};
+
+  literal_number(token_t token) : token(token) {}
+};
+
+struct func_call : public expr_t {
+  token_t name;
+  std::vector<std::unique_ptr<expr_t>> arguments;
+
+  func_call(token_t name, std::vector<std::unique_ptr<expr_t>> arguments)
+      : name(name), arguments(arguments) {}
+};
+
+struct binary_op : public expr_t {
+  token_t op;
+  std::unique_ptr<expr_t> left;
+  std::unique_ptr<expr_t> right;
+
+  binary_op(token_t op, std::unique_ptr<expr_t> left, std::unique_ptr<expr_t> right)
+      : op(op), left(left), right(right) {}
+};
+
+struct func_decl {
+  token_t name;
+  std::vector<token_t*> params;
+  std::vector<stmt_t*> body;
+
+  func_decl(token_t name,
+            std::vector<token_t*> params,
+            std::vector<stmt_t*> body)
+      : name(name), params(params), body(body) {}
+};
+
+struct if_stmt : public stmt_t {
+  expr_t condition;
+  std::vector<stmt_t*> then_body;
+
+  if_stmt(expr_t condition, std::vector<stmt_t*> then_body)
+      : condition(condition), then_body(then_body) {}
+};
+
+struct local_stmt : public stmt_t {
+  token_t name;
+  std::unique_ptr<expr_t> expr;
+
+  local_stmt(token_t name, std::unique_ptr<expr_t> expr) : name(name), expr(expr) {}
+};
+
+struct ret_stmt : public stmt_t {
+  std::unique_ptr<expr_t> expr;
+
+  ret_stmt(std::unique_ptr<expr_t> e) : expr(e) {}
+};
+
+std::string to_string(token_t& t);
+std::string to_string(std::vector<token_t>& v);
+std::string to_string(literal_t& v);
+std::string to_string(literal_id& v);
+std::string to_string(literal_number& v);
+std::string to_string(expr_t& v);
+std::string to_string(func_call& v);
+std::string to_string(binary_op& v);
+std::string to_string(func_decl& v);
+std::string to_string(stmt_t& v);
+std::string to_string(if_stmt& v);
+std::string to_string(local_stmt& v);
+std::string to_string(ret_stmt& v);
+
+std::string to_string(token_t& t) {
+  return t.to_string();
+}
+
+std::string to_string(std::vector<token_t>& v) {
+  std::cout << "[debug] call "
+            << "token_t>& v) " << std::endl;
+  std::string s;
+  for (auto& e : v) {
+    std::cout << "[debug] call "
+              << "e : v) " << std::endl;
+    s += to_string(e) + " ";
+  }
+  return s;
+}
+
+std::string to_string(literal_id& v) {
+  std::cout << "[debug] call "
+            << "to_string(literal_id& v)" << std::endl;
+  return "id " + to_string(v.token);
+}
+
+std::string to_string(literal_number& v) {
+  std::cout << "[debug] call "
+            << "to_string(literal_number& v)" << std::endl;
+  return "number " + to_string(v.token);
+}
+
+std::string to_string(literal_t& v) {
+  std::cout << "[debug] call "
+            << "to_string(literal_t& v)" << std::endl;
+  if (auto* p = dynamic_cast<literal_id*>(&v)) {
+    return "id " + to_string(p->token);
+  } else if (auto* p = dynamic_cast<literal_number*>(&v)) {
+    return "number " + to_string(p->token);
+  } else {
+    return "unknown literal_t";
+  }
+}
+
+std::string to_string(expr_t& v) {
+  std::cout << "[debug] call "
+            << "to_string(expr_t& v)" << std::endl;
+  if (auto* p = dynamic_cast<literal_t*>(&v)) {
+    return to_string(*p);
+  } else if (auto* p = dynamic_cast<func_call*>(&v)) {
+    return to_string(*p);
+  } else if (auto* p = dynamic_cast<binary_op*>(&v)) {
+    return to_string(*p);
+  } else {
+    return "unknown expr_t";
+  }
+}
+
+std::string to_string(func_call& v) {
+  std::cout << "[debug] call "
+            << "to_string(func_call& v)" << std::endl;
+  std::string args;
+  for (auto& e : v.arguments) {
+    args += to_string(*e) + " ";
+  }
+  return "func_call " + to_string(v.name) + "(" + args + ")";
+}
+
+std::string to_string(binary_op& v) {
+  std::cout << "[debug] call "
+            << "to_string(binary_op& v)" << std::endl;
+  return "binary_op " + to_string(v.op) + " " + to_string(*v.left) + " " +
+         to_string(*v.right);
+}
+
+std::string to_string(func_decl& v) {
+  std::cout << "[debug] call "
+            << "to_string(func_decl& v)" << std::endl;
+  std::string params;
+  for (auto& e : v.params) {
+    params += "(" + to_string(*e) + ") ";
+  }
+  std::string body;
+  for (auto& e : v.body) {
+    body += "(" + to_string(*e) + ") ";
+  }
+  return "func_decl " + to_string(v.name) + "(" + params + ") " + body;
+}
+
+std::string to_string(stmt_t& v) {
+  std::cout << "[debug] call "
+            << "to_string(stmt_t& v)" << std::endl;
+  if (auto* p = dynamic_cast<if_stmt*>(&v)) {
+    return to_string(*p);
+  } else if (auto* p = dynamic_cast<local_stmt*>(&v)) {
+    return to_string(*p);
+  } else if (auto* p = dynamic_cast<ret_stmt*>(&v)) {
+    return to_string(*p);
+  } else {
+    return "unknown stmt_t";
+  }
+}
+
+std::string to_string(if_stmt& v) {
+  std::cout << "[debug] call "
+            << "to_string(if_stmt& v)" << std::endl;
+  std::string body;
+  for (auto p : v.then_body) {
+    body += "(" + to_string(*p) + ") ";
+  }
+  return "if_stmt (cond (" + to_string(v.condition) + ") (body (" + body +
+         ")))";
+}
+
+std::string to_string(local_stmt& v) {
+  std::cout << "[debug] call "
+            << "to_string(local_stmt& v)" << std::endl;
+  return "local_stmt (" + to_string(v.name) + " " + to_string(*v.expr) + ")";
+}
+
+std::string to_string(ret_stmt& v) {
+  std::cout << "[debug] call "
+            << "to_string(ret_stmt& v)" << std::endl;
+  return "ret_stmt (" + to_string(*v.expr) + ")";
+}
+
+int main() {
+  auto exp = literal_number{{token_t{3}}};
+  auto e = ret_stmt{&exp};
+  std::cout << typeid(e.expr).name() << std::endl;
+  std::cout << typeid(exp).name() << std::endl;
+  std::cout << to_string(e) << std::endl;
+  return 0;
+}

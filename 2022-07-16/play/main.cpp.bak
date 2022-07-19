@@ -1,0 +1,119 @@
+#include <algorithm>
+#include <functional>
+#include <iostream>
+#include <memory>
+#include <string>
+#include <vector>
+struct token_t {
+  float n;
+};
+
+const static token_t tok_eof{1};
+const static token_t tok_unk{2};
+
+struct literal_id {
+  token_t token{tok_unk};
+};
+struct literal_number {
+  token_t token{tok_unk};
+};
+// using literal_t = std::variant<literal_id, literal_number>;
+struct literal_t {
+  enum type { literal_id_ty, literal_number_ty };
+
+  union value {
+    literal_id literal_id_val;
+    literal_number literal_number_val;
+  };
+
+  type type;
+  value value;
+};
+struct expr_t;
+
+struct func_call {
+  token_t name;
+  std::vector<expr_t> arguments;
+};
+
+struct binary_op {
+  token_t op;
+  expr_t left;
+  expr_t right;
+};
+
+struct stmt_t;
+
+struct func_decl {
+  token_t name;
+  std::vector<token_t> params;
+  std::vector<stmt_t> body;
+};
+
+struct expr_t {
+  enum type { literal_ty, func_call_ty, binary_op_ty };
+
+  union value {
+    literal_t literal_val;
+    func_call func_call_val;
+    binary_op binary_op_val;
+  };
+
+  type type;
+  value value;
+
+  expr_t(literal_t literal) : type(literal_ty), value{literal} {}
+};
+
+struct if_stmt {
+  expr_t condition;
+  std::vector<stmt_t> then_body;
+};
+
+struct local_stmt {
+  token_t name;
+  expr_t expr;
+};
+
+struct ret_stmt {
+  expr_t expr;
+};
+
+struct stmt_t {
+  enum type {
+    expr_ty,
+    func_decl_ty,
+    if_stmt_ty,
+    local_stmt_ty,
+    ret_stmt_ty,
+  };
+
+  union value {
+    expr_t expr;
+    func_decl func_decl_val;
+    if_stmt if_stmt_val;
+    local_stmt local_stmt_val;
+    ret_stmt ret_stmt_val;
+
+    ~value() {}
+  };
+
+  type type;
+  value value;
+};
+
+int main() {
+  auto num = literal_number{
+      token_t{3},
+  };
+  auto lit = literal_t{
+      literal_t::literal_number_ty,
+      1,
+  };
+  auto expr = expr_t{
+      expr_t::literal_ty,
+      lit,
+  };
+  
+  return 0;
+}

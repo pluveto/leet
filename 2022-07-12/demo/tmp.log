@@ -1,0 +1,939 @@
+
+*** Dumping AST Record Layout
+         0 | class std::exception
+         0 |   (exception vtable pointer)
+           | [sizeof=8, dsize=8, align=8,
+           |  nvsize=8, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | class std::type_info
+         0 |   (type_info vtable pointer)
+         8 |   const char * __name
+           | [sizeof=16, dsize=16, align=8,
+           |  nvsize=16, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | class std::bad_alloc
+         0 |   class std::exception (primary base)
+         0 |     (exception vtable pointer)
+           | [sizeof=8, dsize=8, align=8,
+           |  nvsize=8, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | class std::__exception_ptr::exception_ptr
+         0 |   void * _M_exception_object
+           | [sizeof=8, dsize=8, align=8,
+           |  nvsize=8, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | class std::nested_exception
+         0 |   (nested_exception vtable pointer)
+         8 |   class std::__exception_ptr::exception_ptr _M_ptr
+         8 |     void * _M_exception_object
+           | [sizeof=16, dsize=16, align=8,
+           |  nvsize=16, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | struct std::piecewise_construct_t (empty)
+           | [sizeof=1, dsize=0, align=1,
+           |  nvsize=0, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct __gnu_cxx::__ops::_Iter_less_iter (empty)
+           | [sizeof=1, dsize=1, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct __gnu_cxx::__ops::_Iter_less_val (empty)
+           | [sizeof=1, dsize=0, align=1,
+           |  nvsize=0, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct __gnu_cxx::__ops::_Val_less_iter (empty)
+           | [sizeof=1, dsize=0, align=1,
+           |  nvsize=0, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct __gnu_cxx::__ops::_Iter_equal_to_iter (empty)
+           | [sizeof=1, dsize=1, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct __gnu_cxx::__ops::_Iter_equal_to_val (empty)
+           | [sizeof=1, dsize=1, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct __locale_struct
+         0 |   struct __locale_data *[13] __locales
+       104 |   const unsigned short * __ctype_b
+       112 |   const int * __ctype_tolower
+       120 |   const int * __ctype_toupper
+       128 |   const char *[13] __names
+           | [sizeof=232, dsize=232, align=8,
+           |  nvsize=232, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | struct __va_list_tag
+         0 |   unsigned int gp_offset
+         4 |   unsigned int fp_offset
+         8 |   void * overflow_arg_area
+        16 |   void * reg_save_area
+           | [sizeof=24, dsize=24, align=8,
+           |  nvsize=24, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | struct __cancel_jmp_buf_tag
+         0 |   __jmp_buf __cancel_jmp_buf
+        64 |   int __mask_was_saved
+           | [sizeof=72, dsize=72, align=8,
+           |  nvsize=72, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | __sigset_t
+         0 |   unsigned long[16] __val
+           | [sizeof=128, dsize=128, align=8,
+           |  nvsize=128, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | struct __jmp_buf_tag
+         0 |   __jmp_buf __jmpbuf
+        64 |   int __mask_was_saved
+        72 |   __sigset_t __saved_mask
+        72 |     unsigned long[16] __val
+           | [sizeof=200, dsize=200, align=8,
+           |  nvsize=200, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | union pthread_attr_t
+         0 |   char[56] __size
+         0 |   long __align
+           | [sizeof=56, dsize=56, align=8,
+           |  nvsize=56, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | struct __pthread_internal_list
+         0 |   struct __pthread_internal_list * __prev
+         8 |   struct __pthread_internal_list * __next
+           | [sizeof=16, dsize=16, align=8,
+           |  nvsize=16, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | struct __pthread_mutex_s
+         0 |   int __lock
+         4 |   unsigned int __count
+         8 |   int __owner
+        12 |   unsigned int __nusers
+        16 |   int __kind
+        20 |   short __spins
+        22 |   short __elision
+        24 |   struct __pthread_internal_list __list
+        24 |     struct __pthread_internal_list * __prev
+        32 |     struct __pthread_internal_list * __next
+           | [sizeof=40, dsize=40, align=8,
+           |  nvsize=40, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | pthread_mutex_t
+         0 |   struct __pthread_mutex_s __data
+         0 |     int __lock
+         4 |     unsigned int __count
+         8 |     int __owner
+        12 |     unsigned int __nusers
+        16 |     int __kind
+        20 |     short __spins
+        22 |     short __elision
+        24 |     struct __pthread_internal_list __list
+        24 |       struct __pthread_internal_list * __prev
+        32 |       struct __pthread_internal_list * __next
+         0 |   char[40] __size
+         0 |   long __align
+           | [sizeof=40, dsize=40, align=8,
+           |  nvsize=40, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | pthread_mutexattr_t
+         0 |   char[4] __size
+         0 |   int __align
+           | [sizeof=4, dsize=4, align=4,
+           |  nvsize=4, nvalign=4]
+
+*** Dumping AST Record Layout
+         0 | struct timespec
+         0 |   __time_t tv_sec
+         8 |   __syscall_slong_t tv_nsec
+           | [sizeof=16, dsize=16, align=8,
+           |  nvsize=16, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | struct __atomic_wide_counter::(unnamed at /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:28:3)
+         0 |   unsigned int __low
+         4 |   unsigned int __high
+           | [sizeof=8, dsize=8, align=4,
+           |  nvsize=8, nvalign=4]
+
+*** Dumping AST Record Layout
+         0 | __atomic_wide_counter
+         0 |   unsigned long long __value64
+         0 |   struct __atomic_wide_counter::(unnamed at /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:28:3) __value32
+         0 |     unsigned int __low
+         4 |     unsigned int __high
+           | [sizeof=8, dsize=8, align=8,
+           |  nvsize=8, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | struct __pthread_cond_s
+         0 |   __atomic_wide_counter __wseq
+         0 |     unsigned long long __value64
+         0 |     struct __atomic_wide_counter::(unnamed at /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:28:3) __value32
+         0 |       unsigned int __low
+         4 |       unsigned int __high
+         8 |   __atomic_wide_counter __g1_start
+         8 |     unsigned long long __value64
+         8 |     struct __atomic_wide_counter::(unnamed at /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:28:3) __value32
+         8 |       unsigned int __low
+        12 |       unsigned int __high
+        16 |   unsigned int[2] __g_refs
+        24 |   unsigned int[2] __g_size
+        32 |   unsigned int __g1_orig_size
+        36 |   unsigned int __wrefs
+        40 |   unsigned int[2] __g_signals
+           | [sizeof=48, dsize=48, align=8,
+           |  nvsize=48, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | pthread_cond_t
+         0 |   struct __pthread_cond_s __data
+         0 |     __atomic_wide_counter __wseq
+         0 |       unsigned long long __value64
+         0 |       struct __atomic_wide_counter::(unnamed at /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:28:3) __value32
+         0 |         unsigned int __low
+         4 |         unsigned int __high
+         8 |     __atomic_wide_counter __g1_start
+         8 |       unsigned long long __value64
+         8 |       struct __atomic_wide_counter::(unnamed at /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:28:3) __value32
+         8 |         unsigned int __low
+        12 |         unsigned int __high
+        16 |     unsigned int[2] __g_refs
+        24 |     unsigned int[2] __g_size
+        32 |     unsigned int __g1_orig_size
+        36 |     unsigned int __wrefs
+        40 |     unsigned int[2] __g_signals
+         0 |   char[48] __size
+         0 |   long long __align
+           | [sizeof=48, dsize=48, align=8,
+           |  nvsize=48, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | struct std::binary_function<const volatile void *, const volatile void *, _Bool> (empty)
+           | [sizeof=1, dsize=1, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct std::greater<const volatile void *> (empty)
+         0 |   struct std::binary_function<const volatile void *, const volatile void *, _Bool> (base) (empty)
+           | [sizeof=1, dsize=0, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct std::less<const volatile void *> (empty)
+         0 |   struct std::binary_function<const volatile void *, const volatile void *, _Bool> (base) (empty)
+           | [sizeof=1, dsize=0, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct std::greater_equal<const volatile void *> (empty)
+         0 |   struct std::binary_function<const volatile void *, const volatile void *, _Bool> (base) (empty)
+           | [sizeof=1, dsize=0, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct std::less_equal<const volatile void *> (empty)
+         0 |   struct std::binary_function<const volatile void *, const volatile void *, _Bool> (base) (empty)
+           | [sizeof=1, dsize=0, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | class std::allocator<void> (empty)
+           | [sizeof=1, dsize=1, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct std::input_iterator_tag (empty)
+           | [sizeof=1, dsize=1, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct std::forward_iterator_tag (empty)
+         0 |   struct std::input_iterator_tag (base) (empty)
+           | [sizeof=1, dsize=0, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct std::bidirectional_iterator_tag (empty)
+         0 |   struct std::forward_iterator_tag (base) (empty)
+         0 |     struct std::input_iterator_tag (base) (empty)
+           | [sizeof=1, dsize=0, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct std::random_access_iterator_tag (empty)
+         0 |   struct std::bidirectional_iterator_tag (base) (empty)
+         0 |     struct std::forward_iterator_tag (base) (empty)
+         0 |       struct std::input_iterator_tag (base) (empty)
+           | [sizeof=1, dsize=0, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct std::__false_type (empty)
+           | [sizeof=1, dsize=1, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | ldiv_t
+         0 |   long quot
+         8 |   long rem
+           | [sizeof=16, dsize=16, align=8,
+           |  nvsize=16, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | lldiv_t
+         0 |   long long quot
+         8 |   long long rem
+           | [sizeof=16, dsize=16, align=8,
+           |  nvsize=16, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | class __gnu_cxx::new_allocator<char> (empty)
+           | [sizeof=1, dsize=0, align=1,
+           |  nvsize=0, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | class std::allocator<char> (empty)
+         0 |   class __gnu_cxx::new_allocator<char> (base) (empty)
+           | [sizeof=1, dsize=0, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct std::basic_string<char>::_Alloc_hider
+         0 |   class std::allocator<char> (base) (empty)
+         0 |     class __gnu_cxx::new_allocator<char> (base) (empty)
+         0 |   std::basic_string<char>::pointer _M_p
+           | [sizeof=8, dsize=8, align=8,
+           |  nvsize=8, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | union std::basic_string<char>::(anonymous at /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h:179:7)
+         0 |   char[16] _M_local_buf
+         0 |   std::basic_string<char>::size_type _M_allocated_capacity
+           | [sizeof=16, dsize=16, align=8,
+           |  nvsize=16, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | class std::basic_string<char>
+         0 |   struct std::basic_string<char>::_Alloc_hider _M_dataplus
+         0 |     class std::allocator<char> (base) (empty)
+         0 |       class __gnu_cxx::new_allocator<char> (base) (empty)
+         0 |     std::basic_string<char>::pointer _M_p
+         8 |   std::basic_string<char>::size_type _M_string_length
+        16 |   union std::basic_string<char>::(anonymous at /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h:179:7) 
+        16 |     char[16] _M_local_buf
+        16 |     std::basic_string<char>::size_type _M_allocated_capacity
+           | [sizeof=32, dsize=32, align=8,
+           |  nvsize=32, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | class __gnu_cxx::new_allocator<wchar_t> (empty)
+           | [sizeof=1, dsize=0, align=1,
+           |  nvsize=0, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | class std::allocator<wchar_t> (empty)
+         0 |   class __gnu_cxx::new_allocator<wchar_t> (base) (empty)
+           | [sizeof=1, dsize=0, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct std::basic_string<wchar_t>::_Alloc_hider
+         0 |   class std::allocator<wchar_t> (base) (empty)
+         0 |     class __gnu_cxx::new_allocator<wchar_t> (base) (empty)
+         0 |   std::basic_string<wchar_t>::pointer _M_p
+           | [sizeof=8, dsize=8, align=8,
+           |  nvsize=8, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | union std::basic_string<wchar_t>::(anonymous at /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h:179:7)
+         0 |   wchar_t[4] _M_local_buf
+         0 |   std::basic_string<wchar_t>::size_type _M_allocated_capacity
+           | [sizeof=16, dsize=16, align=8,
+           |  nvsize=16, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | class std::basic_string<wchar_t>
+         0 |   struct std::basic_string<wchar_t>::_Alloc_hider _M_dataplus
+         0 |     class std::allocator<wchar_t> (base) (empty)
+         0 |       class __gnu_cxx::new_allocator<wchar_t> (base) (empty)
+         0 |     std::basic_string<wchar_t>::pointer _M_p
+         8 |   std::basic_string<wchar_t>::size_type _M_string_length
+        16 |   union std::basic_string<wchar_t>::(anonymous at /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h:179:7) 
+        16 |     wchar_t[4] _M_local_buf
+        16 |     std::basic_string<wchar_t>::size_type _M_allocated_capacity
+           | [sizeof=32, dsize=32, align=8,
+           |  nvsize=32, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | class __gnu_cxx::new_allocator<char16_t> (empty)
+           | [sizeof=1, dsize=0, align=1,
+           |  nvsize=0, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | class std::allocator<char16_t> (empty)
+         0 |   class __gnu_cxx::new_allocator<char16_t> (base) (empty)
+           | [sizeof=1, dsize=0, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct std::basic_string<char16_t>::_Alloc_hider
+         0 |   class std::allocator<char16_t> (base) (empty)
+         0 |     class __gnu_cxx::new_allocator<char16_t> (base) (empty)
+         0 |   std::basic_string<char16_t>::pointer _M_p
+           | [sizeof=8, dsize=8, align=8,
+           |  nvsize=8, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | union std::basic_string<char16_t>::(anonymous at /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h:179:7)
+         0 |   char16_t[8] _M_local_buf
+         0 |   std::basic_string<char16_t>::size_type _M_allocated_capacity
+           | [sizeof=16, dsize=16, align=8,
+           |  nvsize=16, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | class std::basic_string<char16_t>
+         0 |   struct std::basic_string<char16_t>::_Alloc_hider _M_dataplus
+         0 |     class std::allocator<char16_t> (base) (empty)
+         0 |       class __gnu_cxx::new_allocator<char16_t> (base) (empty)
+         0 |     std::basic_string<char16_t>::pointer _M_p
+         8 |   std::basic_string<char16_t>::size_type _M_string_length
+        16 |   union std::basic_string<char16_t>::(anonymous at /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h:179:7) 
+        16 |     char16_t[8] _M_local_buf
+        16 |     std::basic_string<char16_t>::size_type _M_allocated_capacity
+           | [sizeof=32, dsize=32, align=8,
+           |  nvsize=32, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | class __gnu_cxx::new_allocator<char32_t> (empty)
+           | [sizeof=1, dsize=0, align=1,
+           |  nvsize=0, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | class std::allocator<char32_t> (empty)
+         0 |   class __gnu_cxx::new_allocator<char32_t> (base) (empty)
+           | [sizeof=1, dsize=0, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct std::basic_string<char32_t>::_Alloc_hider
+         0 |   class std::allocator<char32_t> (base) (empty)
+         0 |     class __gnu_cxx::new_allocator<char32_t> (base) (empty)
+         0 |   std::basic_string<char32_t>::pointer _M_p
+           | [sizeof=8, dsize=8, align=8,
+           |  nvsize=8, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | union std::basic_string<char32_t>::(anonymous at /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h:179:7)
+         0 |   char32_t[4] _M_local_buf
+         0 |   std::basic_string<char32_t>::size_type _M_allocated_capacity
+           | [sizeof=16, dsize=16, align=8,
+           |  nvsize=16, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | class std::basic_string<char32_t>
+         0 |   struct std::basic_string<char32_t>::_Alloc_hider _M_dataplus
+         0 |     class std::allocator<char32_t> (base) (empty)
+         0 |       class __gnu_cxx::new_allocator<char32_t> (base) (empty)
+         0 |     std::basic_string<char32_t>::pointer _M_p
+         8 |   std::basic_string<char32_t>::size_type _M_string_length
+        16 |   union std::basic_string<char32_t>::(anonymous at /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h:179:7) 
+        16 |     char32_t[4] _M_local_buf
+        16 |     std::basic_string<char32_t>::size_type _M_allocated_capacity
+           | [sizeof=32, dsize=32, align=8,
+           |  nvsize=32, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | class std::locale
+         0 |   class std::locale::_Impl * _M_impl
+           | [sizeof=8, dsize=8, align=8,
+           |  nvsize=8, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | class std::locale::facet
+         0 |   (facet vtable pointer)
+         8 |   _Atomic_word _M_refcount
+           | [sizeof=16, dsize=12, align=8,
+           |  nvsize=12, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | class std::locale::id
+         0 |   std::size_t _M_index
+           | [sizeof=8, dsize=8, align=8,
+           |  nvsize=8, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | class std::locale::_Impl
+         0 |   _Atomic_word _M_refcount
+         8 |   const class std::locale::facet ** _M_facets
+        16 |   std::size_t _M_facets_size
+        24 |   const class std::locale::facet ** _M_caches
+        32 |   char ** _M_names
+           | [sizeof=40, dsize=40, align=8,
+           |  nvsize=40, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | struct std::binary_function<const class std::error_category *, const class std::error_category *, _Bool> (empty)
+           | [sizeof=1, dsize=1, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct std::less<const class std::error_category *> (empty)
+         0 |   struct std::binary_function<const class std::error_category *, const class std::error_category *, _Bool> (base) (empty)
+           | [sizeof=1, dsize=0, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | class std::error_category
+         0 |   (error_category vtable pointer)
+           | [sizeof=8, dsize=8, align=8,
+           |  nvsize=8, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | class std::error_code
+         0 |   int _M_value
+         8 |   const class std::error_category * _M_cat
+           | [sizeof=16, dsize=16, align=8,
+           |  nvsize=16, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | class std::error_condition
+         0 |   int _M_value
+         8 |   const class std::error_category * _M_cat
+           | [sizeof=16, dsize=16, align=8,
+           |  nvsize=16, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | union std::__cow_string::(anonymous at /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/stdexcept:50:5)
+         0 |   const char * _M_p
+         0 |   char[8] _M_bytes
+           | [sizeof=8, dsize=8, align=8,
+           |  nvsize=8, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | struct std::__cow_string
+         0 |   union std::__cow_string::(anonymous at /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/stdexcept:50:5) 
+         0 |     const char * _M_p
+         0 |     char[8] _M_bytes
+           | [sizeof=8, dsize=8, align=8,
+           |  nvsize=8, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | class std::runtime_error
+         0 |   class std::exception (primary base)
+         0 |     (exception vtable pointer)
+         8 |   struct std::__cow_string _M_msg
+         8 |     union std::__cow_string::(anonymous at /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/stdexcept:50:5) 
+         8 |       const char * _M_p
+         8 |       char[8] _M_bytes
+           | [sizeof=16, dsize=16, align=8,
+           |  nvsize=16, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | class std::system_error
+         0 |   class std::runtime_error (primary base)
+         0 |     class std::exception (primary base)
+         0 |       (exception vtable pointer)
+         8 |     struct std::__cow_string _M_msg
+         8 |       union std::__cow_string::(anonymous at /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/stdexcept:50:5) 
+         8 |         const char * _M_p
+         8 |         char[8] _M_bytes
+        16 |   class std::error_code _M_code
+        16 |     int _M_value
+        24 |     const class std::error_category * _M_cat
+           | [sizeof=32, dsize=32, align=8,
+           |  nvsize=32, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | struct std::ios_base::_Words
+         0 |   void * _M_pword
+         8 |   long _M_iword
+           | [sizeof=16, dsize=16, align=8,
+           |  nvsize=16, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | class std::ios_base
+         0 |   (ios_base vtable pointer)
+         8 |   std::streamsize _M_precision
+        16 |   std::streamsize _M_width
+        24 |   std::ios_base::fmtflags _M_flags
+        28 |   std::ios_base::iostate _M_exception
+        32 |   std::ios_base::iostate _M_streambuf_state
+        40 |   struct std::ios_base::_Callback_list * _M_callbacks
+        48 |   struct std::ios_base::_Words _M_word_zero
+        48 |     void * _M_pword
+        56 |     long _M_iword
+        64 |   struct std::ios_base::_Words[8] _M_local_word
+       192 |   int _M_word_size
+       200 |   struct std::ios_base::_Words * _M_word
+       208 |   class std::locale _M_ios_locale
+       208 |     class std::locale::_Impl * _M_impl
+           | [sizeof=216, dsize=216, align=8,
+           |  nvsize=216, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | struct std::ctype_base (empty)
+           | [sizeof=1, dsize=1, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | class std::ctype<char>
+         0 |   class std::locale::facet (primary base)
+         0 |     (facet vtable pointer)
+         8 |     _Atomic_word _M_refcount
+         0 |   struct std::ctype_base (base) (empty)
+        16 |   std::__c_locale _M_c_locale_ctype
+        24 |   _Bool _M_del
+        32 |   std::ctype_base::__to_type _M_toupper
+        40 |   std::ctype_base::__to_type _M_tolower
+        48 |   const std::ctype_base::mask * _M_table
+        56 |   char _M_widen_ok
+        57 |   char[256] _M_widen
+       313 |   char[256] _M_narrow
+       569 |   char _M_narrow_ok
+           | [sizeof=576, dsize=570, align=8,
+           |  nvsize=570, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | struct std::__type_identity<class std::allocator<char> > (empty)
+           | [sizeof=1, dsize=1, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct std::integral_constant<_Bool, true> (empty)
+           | [sizeof=1, dsize=1, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct std::ios_base::_Callback_list
+         0 |   struct std::ios_base::_Callback_list * _M_next
+         8 |   class ios_base::event_callback _M_fn
+        16 |   int _M_index
+        20 |   _Atomic_word _M_refcount
+           | [sizeof=24, dsize=24, align=8,
+           |  nvsize=24, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | class std::ios_base::Init (empty)
+           | [sizeof=1, dsize=0, align=1,
+           |  nvsize=0, nvalign=1]
+
+*** Dumping IRgen Record Layout
+Record: [0;1;32mCXXRecordDecl[0m[0;33m 0xf8d178[0m <[0;33m/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/ios_base.h:626:5[0m, [0;33mline:641:5[0m> [0;33mline:626:11[0m referenced class[0;1;36m Init[0m definition
+[0;34m|-[0m[0;1;32mDefinitionData[0m empty standard_layout has_user_declared_ctor can_const_default_init
+[0;34m| |-[0m[0;1;32mDefaultConstructor[0m exists non_trivial user_provided defaulted_is_constexpr
+[0;34m| |-[0m[0;1;32mCopyConstructor[0m trivial user_declared has_const_param implicit_has_const_param
+[0;34m| |-[0m[0;1;32mMoveConstructor[0m
+[0;34m| |-[0m[0;1;32mCopyAssignment[0m trivial has_const_param user_declared implicit_has_const_param
+[0;34m| |-[0m[0;1;32mMoveAssignment[0m
+[0;34m| `-[0m[0;1;32mDestructor[0m non_trivial user_declared
+[0;34m|-[0m[0;1;32mCXXRecordDecl[0m[0;33m 0xf8d298[0m <[0;33mcol:5[0m, [0;33mcol:11[0m> [0;33mcol:11[0m implicit referenced class[0;1;36m Init[0m
+[0;34m|-[0m[0;1;32mFriendDecl[0m[0;33m 0xf8d380[0m <[0;33mline:628:7[0m, [0;33mcol:20[0m> [0;33mcol:14[0m [0;32m'class ios_base':'std::ios_base'[0m
+[0;34m|-[0m[0;1;32mAccessSpecDecl[0m[0;33m 0xf8d3c0[0m <[0;33mline:629:5[0m, [0;33mcol:11[0m> [0;33mcol:5[0m public
+[0;34m|-[0m[0;1;32mCXXConstructorDecl[0m[0;33m 0xf8d450[0m <[0;33mline:630:7[0m, [0;33mcol:12[0m> [0;33mcol:7[0m used[0;1;36m Init[0m [0;32m'void ()'[0m
+[0;34m|-[0m[0;1;32mCXXDestructorDecl[0m[0;33m 0xf8d540[0m <[0;33mline:631:7[0m, [0;33mcol:13[0m> [0;33mcol:7[0m used[0;1;36m ~Init[0m [0;32m'void () noexcept'[0m
+[0;34m|-[0m[0;1;32mCXXConstructorDecl[0m[0;33m 0xf8d718[0m <[0;33mline:634:7[0m, [0;33mcol:33[0m> [0;33mcol:7[0m constexpr[0;1;36m Init[0m [0;32m'void (const std::ios_base::Init &)'[0m default trivial noexcept-unevaluated 0xf8d718
+[0;34m| `-[0m[0;1;32mParmVarDecl[0m[0;33m 0xf8d658[0m <[0;33mcol:12[0m, [0;33mcol:22[0m> [0;33mcol:23[0m [0;32m'const std::ios_base::Init &'[0m
+[0;34m|-[0m[0;1;32mCXXMethodDecl[0m[0;33m 0xf8d8d8[0m <[0;33mline:635:7[0m, [0;33mcol:44[0m> [0;33mcol:13[0m[0;1;36m operator=[0m [0;32m'std::ios_base::Init &(const std::ios_base::Init &)'[0m default trivial noexcept-unevaluated 0xf8d8d8
+[0;34m| `-[0m[0;1;32mParmVarDecl[0m[0;33m 0xf8d7e8[0m <[0;33mcol:23[0m, [0;33mcol:33[0m> [0;33mcol:34[0m [0;32m'const std::ios_base::Init &'[0m
+[0;34m|-[0m[0;1;32mAccessSpecDecl[0m[0;33m 0xf8d980[0m <[0;33mline:638:5[0m, [0;33mcol:12[0m> [0;33mcol:5[0m private
+[0;34m|-[0m[0;1;32mVarDecl[0m[0;33m 0xf8d9b8[0m <[0;33mline:639:7[0m, [0;33mcol:27[0m> [0;33mcol:27[0m[0;1;36m _S_refcount[0m [0;32m'_Atomic_word':'int'[0m static
+[0;34m`-[0m[0;1;32mVarDecl[0m[0;33m 0xf8da30[0m <[0;33mline:640:7[0m, [0;33mcol:20[0m> [0;33mcol:20[0m[0;1;36m _S_synced_with_stdio[0m [0;32m'bool'[0m static
+
+Layout: <CGRecordLayout
+  LLVMType:%"class.std::ios_base::Init" = type { i8 }
+  NonVirtualBaseLLVMType:%"class.std::ios_base::Init.base" = type {}
+  IsZeroInitializable:1
+  BitFields:[
+]>
+
+*** Dumping AST Record Layout
+         0 | class base_class_1 (empty)
+           | [sizeof=1, dsize=1, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | class base_class_2 (empty)
+           | [sizeof=1, dsize=1, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | class child_class
+         0 |   (child_class vtable pointer)
+         0 |   class base_class_1 (virtual base) (empty)
+         0 |   class base_class_2 (virtual base) (empty)
+           | [sizeof=8, dsize=8, align=8,
+           |  nvsize=8, nvalign=8]
+
+*** Dumping IRgen Record Layout
+Record: [0;1;32mCXXRecordDecl[0m[0;33m 0x1197d50[0m <[0;33mdemo.cpp:20:1[0m, [0;33mline:24:1[0m> [0;33mline:20:7[0m referenced class[0;1;36m child_class[0m definition
+[0;34m|-[0m[0;1;32mDefinitionData[0m can_const_default_init
+[0;34m| |-[0m[0;1;32mDefaultConstructor[0m exists non_trivial
+[0;34m| |-[0m[0;1;32mCopyConstructor[0m simple non_trivial has_const_param implicit_has_const_param
+[0;34m| |-[0m[0;1;32mMoveConstructor[0m exists simple non_trivial
+[0;34m| |-[0m[0;1;32mCopyAssignment[0m simple non_trivial has_const_param implicit_has_const_param
+[0;34m| |-[0m[0;1;32mMoveAssignment[0m exists simple non_trivial
+[0;34m| `-[0m[0;1;32mDestructor[0m simple irrelevant trivial
+[0;34m|-[0mvirtual public [0;32m'base_class_1'[0m
+[0;34m|-[0mvirtual public [0;32m'base_class_2'[0m
+[0;34m|-[0m[0;1;32mCXXRecordDecl[0m[0;33m 0x1197f18[0m <[0;33mcol:1[0m, [0;33mcol:7[0m> [0;33mcol:7[0m implicit class[0;1;36m child_class[0m
+[0;34m|-[0m[0;1;32mAccessSpecDecl[0m[0;33m 0x1197fa8[0m <[0;33mline:21:1[0m, [0;33mcol:7[0m> [0;33mcol:1[0m public
+[0;34m|-[0m[0;1;32mCXXMethodDecl[0m[0;33m 0x1198018[0m <[0;33mline:22:3[0m, [0;33mcol:20[0m> [0;33mcol:8[0m used[0;1;36m cc_func1[0m [0;32m'void ()'[0m
+[0;34m| `-[0m[0;1;35mCompoundStmt[0m[0;33m 0x1198f10[0m <[0;33mcol:19[0m, [0;33mcol:20[0m>
+[0;34m|-[0m[0;1;32mCXXMethodDecl[0m[0;33m 0x11980d8[0m <[0;33mline:23:3[0m, [0;33mcol:20[0m> [0;33mcol:8[0m used[0;1;36m cc_func2[0m [0;32m'void ()'[0m
+[0;34m| `-[0m[0;1;35mCompoundStmt[0m[0;33m 0x1198f20[0m <[0;33mcol:19[0m, [0;33mcol:20[0m>
+[0;34m|-[0m[0;1;32mCXXMethodDecl[0m[0;33m 0x11981d8[0m <[0;33mline:20:7[0m> [0;33mcol:7[0m implicit[0;1;36m operator=[0m [0;32m'child_class &(const child_class &)'[0m inline default noexcept-unevaluated 0x11981d8
+[0;34m| `-[0m[0;1;32mParmVarDecl[0m[0;33m 0x11982e8[0m <[0;33mcol:7[0m> [0;33mcol:7[0m [0;32m'const child_class &'[0m
+[0;34m|-[0m[0;1;32mCXXMethodDecl[0m[0;33m 0x1198ac8[0m <[0;33mcol:7[0m> [0;33mcol:7[0m implicit[0;1;36m operator=[0m [0;32m'child_class &(child_class &&)'[0m inline default noexcept-unevaluated 0x1198ac8
+[0;34m| `-[0m[0;1;32mParmVarDecl[0m[0;33m 0x1198bd8[0m <[0;33mcol:7[0m> [0;33mcol:7[0m [0;32m'child_class &&'[0m
+[0;34m|-[0m[0;1;32mCXXDestructorDecl[0m[0;33m 0x1198c70[0m <[0;33mcol:7[0m> [0;33mcol:7[0m implicit[0;1;36m ~child_class[0m [0;32m'void ()'[0m inline default trivial noexcept-unevaluated 0x1198c70
+[0;34m|-[0m[0;1;32mCXXConstructorDecl[0m[0;33m 0x1199088[0m <[0;33mcol:7[0m> [0;33mcol:7[0m implicit used[0;1;36m child_class[0m [0;32m'void () noexcept'[0m inline default
+[0;34m| |-[0mCXXCtorInitializer [0;32m'base_class_1'[0m
+[0;34m| | `-[0m[0;1;35mCXXConstructExpr[0m[0;33m 0x1199ef8[0m <[0;33mcol:7[0m> [0;32m'base_class_1'[0m[0;36m[0m[0;36m[0m [0;32m'void () noexcept'[0m
+[0;34m| |-[0mCXXCtorInitializer [0;32m'base_class_2'[0m
+[0;34m| | `-[0m[0;1;35mCXXConstructExpr[0m[0;33m 0x1199f60[0m <[0;33mcol:7[0m> [0;32m'base_class_2'[0m[0;36m[0m[0;36m[0m [0;32m'void () noexcept'[0m
+[0;34m| `-[0m[0;1;35mCompoundStmt[0m[0;33m 0x1199fc8[0m <[0;33mcol:7[0m>
+[0;34m|-[0m[0;1;32mCXXConstructorDecl[0m[0;33m 0x1199340[0m <[0;33mcol:7[0m> [0;33mcol:7[0m implicit[0;1;36m child_class[0m [0;32m'void (const child_class &)'[0m inline default noexcept-unevaluated 0x1199340
+[0;34m| `-[0m[0;1;32mParmVarDecl[0m[0;33m 0x1199458[0m <[0;33mcol:7[0m> [0;33mcol:7[0m [0;32m'const child_class &'[0m
+[0;34m`-[0m[0;1;32mCXXConstructorDecl[0m[0;33m 0x1199b18[0m <[0;33mcol:7[0m> [0;33mcol:7[0m implicit[0;1;36m child_class[0m [0;32m'void (child_class &&)'[0m inline default noexcept-unevaluated 0x1199b18
+[0;34m  `-[0m[0;1;32mParmVarDecl[0m[0;33m 0x1199c28[0m <[0;33mcol:7[0m> [0;33mcol:7[0m [0;32m'child_class &&'[0m
+
+Layout: <CGRecordLayout
+  LLVMType:%class.child_class = type { i32 (...)** }
+  NonVirtualBaseLLVMType:%class.child_class = type { i32 (...)** }
+  IsZeroInitializable:1
+  BitFields:[
+]>
+
+*** Dumping IRgen Record Layout
+Record: [0;1;32mCXXRecordDecl[0m[0;33m 0x11975f0[0m <[0;33mdemo.cpp:10:1[0m, [0;33mline:14:1[0m> [0;33mline:10:7[0m referenced class[0;1;36m base_class_1[0m definition
+[0;34m|-[0m[0;1;32mDefinitionData[0m pass_in_registers empty aggregate standard_layout trivially_copyable pod trivial literal has_constexpr_non_copy_move_ctor can_const_default_init
+[0;34m| |-[0m[0;1;32mDefaultConstructor[0m exists trivial constexpr defaulted_is_constexpr
+[0;34m| |-[0m[0;1;32mCopyConstructor[0m simple trivial has_const_param implicit_has_const_param
+[0;34m| |-[0m[0;1;32mMoveConstructor[0m exists simple trivial
+[0;34m| |-[0m[0;1;32mCopyAssignment[0m simple trivial has_const_param implicit_has_const_param
+[0;34m| |-[0m[0;1;32mMoveAssignment[0m exists simple trivial
+[0;34m| `-[0m[0;1;32mDestructor[0m simple irrelevant trivial
+[0;34m|-[0m[0;1;32mCXXRecordDecl[0m[0;33m 0x1197708[0m <[0;33mcol:1[0m, [0;33mcol:7[0m> [0;33mcol:7[0m implicit class[0;1;36m base_class_1[0m
+[0;34m|-[0m[0;1;32mAccessSpecDecl[0m[0;33m 0x1197798[0m <[0;33mline:11:1[0m, [0;33mcol:7[0m> [0;33mcol:1[0m public
+[0;34m|-[0m[0;1;32mCXXMethodDecl[0m[0;33m 0x1197808[0m <[0;33mline:12:3[0m, [0;33mcol:21[0m> [0;33mcol:8[0m used[0;1;36m bc1_func1[0m [0;32m'void ()'[0m
+[0;34m| `-[0m[0;1;35mCompoundStmt[0m[0;33m 0x1197980[0m <[0;33mcol:20[0m, [0;33mcol:21[0m>
+[0;34m|-[0m[0;1;32mCXXMethodDecl[0m[0;33m 0x11978c8[0m <[0;33mline:13:3[0m, [0;33mcol:21[0m> [0;33mcol:8[0m used[0;1;36m bc1_func2[0m [0;32m'void ()'[0m
+[0;34m| `-[0m[0;1;35mCompoundStmt[0m[0;33m 0x1197990[0m <[0;33mcol:20[0m, [0;33mcol:21[0m>
+[0;34m|-[0m[0;1;32mCXXMethodDecl[0m[0;33m 0x11983b8[0m <[0;33mline:10:7[0m> [0;33mcol:7[0m implicit constexpr[0;1;36m operator=[0m [0;32m'base_class_1 &(const base_class_1 &)'[0m inline default trivial noexcept-unevaluated 0x11983b8
+[0;34m| `-[0m[0;1;32mParmVarDecl[0m[0;33m 0x11984c8[0m <[0;33mcol:7[0m> [0;33mcol:7[0m [0;32m'const base_class_1 &'[0m
+[0;34m|-[0m[0;1;32mCXXMethodDecl[0m[0;33m 0x1198568[0m <[0;33mcol:7[0m> [0;33mcol:7[0m implicit constexpr[0;1;36m operator=[0m [0;32m'base_class_1 &(base_class_1 &&)'[0m inline default trivial noexcept-unevaluated 0x1198568
+[0;34m| `-[0m[0;1;32mParmVarDecl[0m[0;33m 0x1198678[0m <[0;33mcol:7[0m> [0;33mcol:7[0m [0;32m'base_class_1 &&'[0m
+[0;34m|-[0m[0;1;32mCXXDestructorDecl[0m[0;33m 0x1198d50[0m <[0;33mcol:7[0m> [0;33mcol:7[0m implicit[0;1;36m ~base_class_1[0m [0;32m'void ()'[0m inline default trivial noexcept-unevaluated 0x1198d50
+[0;34m|-[0m[0;1;32mCXXConstructorDecl[0m[0;33m 0x1199178[0m <[0;33mcol:7[0m> [0;33mcol:7[0m implicit used constexpr[0;1;36m base_class_1[0m [0;32m'void () noexcept'[0m inline default trivial
+[0;34m| `-[0m[0;1;35mCompoundStmt[0m[0;33m 0x1199ee8[0m <[0;33mcol:7[0m>
+[0;34m|-[0m[0;1;32mCXXConstructorDecl[0m[0;33m 0x11994c8[0m <[0;33mcol:7[0m> [0;33mcol:7[0m implicit constexpr[0;1;36m base_class_1[0m [0;32m'void (const base_class_1 &)'[0m inline default trivial noexcept-unevaluated 0x11994c8
+[0;34m| `-[0m[0;1;32mParmVarDecl[0m[0;33m 0x11995d8[0m <[0;33mcol:7[0m> [0;33mcol:7[0m [0;32m'const base_class_1 &'[0m
+[0;34m`-[0m[0;1;32mCXXConstructorDecl[0m[0;33m 0x1199658[0m <[0;33mcol:7[0m> [0;33mcol:7[0m implicit constexpr[0;1;36m base_class_1[0m [0;32m'void (base_class_1 &&)'[0m inline default trivial noexcept-unevaluated 0x1199658
+[0;34m  `-[0m[0;1;32mParmVarDecl[0m[0;33m 0x1199768[0m <[0;33mcol:7[0m> [0;33mcol:7[0m [0;32m'base_class_1 &&'[0m
+
+Layout: <CGRecordLayout
+  LLVMType:%class.base_class_1 = type { i8 }
+  NonVirtualBaseLLVMType:%class.base_class_1 = type { i8 }
+  IsZeroInitializable:1
+  BitFields:[
+]>
+
+*** Dumping IRgen Record Layout
+Record: [0;1;32mCXXRecordDecl[0m[0;33m 0x11979a0[0m <[0;33mdemo.cpp:15:1[0m, [0;33mline:19:1[0m> [0;33mline:15:7[0m referenced class[0;1;36m base_class_2[0m definition
+[0;34m|-[0m[0;1;32mDefinitionData[0m pass_in_registers empty aggregate standard_layout trivially_copyable pod trivial literal has_constexpr_non_copy_move_ctor can_const_default_init
+[0;34m| |-[0m[0;1;32mDefaultConstructor[0m exists trivial constexpr defaulted_is_constexpr
+[0;34m| |-[0m[0;1;32mCopyConstructor[0m simple trivial has_const_param implicit_has_const_param
+[0;34m| |-[0m[0;1;32mMoveConstructor[0m exists simple trivial
+[0;34m| |-[0m[0;1;32mCopyAssignment[0m simple trivial has_const_param implicit_has_const_param
+[0;34m| |-[0m[0;1;32mMoveAssignment[0m exists simple trivial
+[0;34m| `-[0m[0;1;32mDestructor[0m simple irrelevant trivial
+[0;34m|-[0m[0;1;32mCXXRecordDecl[0m[0;33m 0x1197ab8[0m <[0;33mcol:1[0m, [0;33mcol:7[0m> [0;33mcol:7[0m implicit class[0;1;36m base_class_2[0m
+[0;34m|-[0m[0;1;32mAccessSpecDecl[0m[0;33m 0x1197b48[0m <[0;33mline:16:1[0m, [0;33mcol:7[0m> [0;33mcol:1[0m public
+[0;34m|-[0m[0;1;32mCXXMethodDecl[0m[0;33m 0x1197bb8[0m <[0;33mline:17:3[0m, [0;33mcol:21[0m> [0;33mcol:8[0m used[0;1;36m bc2_func1[0m [0;32m'void ()'[0m
+[0;34m| `-[0m[0;1;35mCompoundStmt[0m[0;33m 0x1197d30[0m <[0;33mcol:20[0m, [0;33mcol:21[0m>
+[0;34m|-[0m[0;1;32mCXXMethodDecl[0m[0;33m 0x1197c78[0m <[0;33mline:18:3[0m, [0;33mcol:21[0m> [0;33mcol:8[0m used[0;1;36m bc2_func2[0m [0;32m'void ()'[0m
+[0;34m| `-[0m[0;1;35mCompoundStmt[0m[0;33m 0x1197d40[0m <[0;33mcol:20[0m, [0;33mcol:21[0m>
+[0;34m|-[0m[0;1;32mCXXMethodDecl[0m[0;33m 0x1198758[0m <[0;33mline:15:7[0m> [0;33mcol:7[0m implicit constexpr[0;1;36m operator=[0m [0;32m'base_class_2 &(const base_class_2 &)'[0m inline default trivial noexcept-unevaluated 0x1198758
+[0;34m| `-[0m[0;1;32mParmVarDecl[0m[0;33m 0x1198868[0m <[0;33mcol:7[0m> [0;33mcol:7[0m [0;32m'const base_class_2 &'[0m
+[0;34m|-[0m[0;1;32mCXXMethodDecl[0m[0;33m 0x1198908[0m <[0;33mcol:7[0m> [0;33mcol:7[0m implicit constexpr[0;1;36m operator=[0m [0;32m'base_class_2 &(base_class_2 &&)'[0m inline default trivial noexcept-unevaluated 0x1198908
+[0;34m| `-[0m[0;1;32mParmVarDecl[0m[0;33m 0x1198a18[0m <[0;33mcol:7[0m> [0;33mcol:7[0m [0;32m'base_class_2 &&'[0m
+[0;34m|-[0m[0;1;32mCXXDestructorDecl[0m[0;33m 0x1198e30[0m <[0;33mcol:7[0m> [0;33mcol:7[0m implicit[0;1;36m ~base_class_2[0m [0;32m'void ()'[0m inline default trivial noexcept-unevaluated 0x1198e30
+[0;34m|-[0m[0;1;32mCXXConstructorDecl[0m[0;33m 0x1199268[0m <[0;33mcol:7[0m> [0;33mcol:7[0m implicit used constexpr[0;1;36m base_class_2[0m [0;32m'void () noexcept'[0m inline default trivial
+[0;34m| `-[0m[0;1;35mCompoundStmt[0m[0;33m 0x1199f50[0m <[0;33mcol:7[0m>
+[0;34m|-[0m[0;1;32mCXXConstructorDecl[0m[0;33m 0x11997e8[0m <[0;33mcol:7[0m> [0;33mcol:7[0m implicit constexpr[0;1;36m base_class_2[0m [0;32m'void (const base_class_2 &)'[0m inline default trivial noexcept-unevaluated 0x11997e8
+[0;34m| `-[0m[0;1;32mParmVarDecl[0m[0;33m 0x11998f8[0m <[0;33mcol:7[0m> [0;33mcol:7[0m [0;32m'const base_class_2 &'[0m
+[0;34m`-[0m[0;1;32mCXXConstructorDecl[0m[0;33m 0x1199978[0m <[0;33mcol:7[0m> [0;33mcol:7[0m implicit constexpr[0;1;36m base_class_2[0m [0;32m'void (base_class_2 &&)'[0m inline default trivial noexcept-unevaluated 0x1199978
+[0;34m  `-[0m[0;1;32mParmVarDecl[0m[0;33m 0x1199a88[0m <[0;33mcol:7[0m> [0;33mcol:7[0m [0;32m'base_class_2 &&'[0m
+
+Layout: <CGRecordLayout
+  LLVMType:%class.base_class_2 = type { i8 }
+  NonVirtualBaseLLVMType:%class.base_class_2 = type { i8 }
+  IsZeroInitializable:1
+  BitFields:[
+]>
+
+*** Dumping AST Record Layout
+         0 | struct _Save_errno
+         0 |   int _M_errno
+           | [sizeof=4, dsize=4, align=4,
+           |  nvsize=4, nvalign=4]
+
+*** Dumping AST Record Layout
+         0 | struct std::is_same<int, int> (empty)
+         0 |   struct std::integral_constant<_Bool, true> (base) (empty)
+           | [sizeof=1, dsize=0, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct _Save_errno
+         0 |   int _M_errno
+           | [sizeof=4, dsize=4, align=4,
+           |  nvsize=4, nvalign=4]
+
+*** Dumping AST Record Layout
+         0 | struct std::integral_constant<_Bool, false> (empty)
+           | [sizeof=1, dsize=1, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct std::is_same<long, int> (empty)
+         0 |   struct std::integral_constant<_Bool, false> (base) (empty)
+           | [sizeof=1, dsize=0, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct _Save_errno
+         0 |   int _M_errno
+           | [sizeof=4, dsize=4, align=4,
+           |  nvsize=4, nvalign=4]
+
+*** Dumping AST Record Layout
+         0 | struct std::is_same<unsigned long, int> (empty)
+         0 |   struct std::integral_constant<_Bool, false> (base) (empty)
+           | [sizeof=1, dsize=0, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct _Save_errno
+         0 |   int _M_errno
+           | [sizeof=4, dsize=4, align=4,
+           |  nvsize=4, nvalign=4]
+
+*** Dumping AST Record Layout
+         0 | struct std::is_same<long long, int> (empty)
+         0 |   struct std::integral_constant<_Bool, false> (base) (empty)
+           | [sizeof=1, dsize=0, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct _Save_errno
+         0 |   int _M_errno
+           | [sizeof=4, dsize=4, align=4,
+           |  nvsize=4, nvalign=4]
+
+*** Dumping AST Record Layout
+         0 | struct std::is_same<unsigned long long, int> (empty)
+         0 |   struct std::integral_constant<_Bool, false> (base) (empty)
+           | [sizeof=1, dsize=0, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct _Save_errno
+         0 |   int _M_errno
+           | [sizeof=4, dsize=4, align=4,
+           |  nvsize=4, nvalign=4]
+
+*** Dumping AST Record Layout
+         0 | struct std::is_same<float, int> (empty)
+         0 |   struct std::integral_constant<_Bool, false> (base) (empty)
+           | [sizeof=1, dsize=0, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct _Save_errno
+         0 |   int _M_errno
+           | [sizeof=4, dsize=4, align=4,
+           |  nvsize=4, nvalign=4]
+
+*** Dumping AST Record Layout
+         0 | struct std::is_same<double, int> (empty)
+         0 |   struct std::integral_constant<_Bool, false> (base) (empty)
+           | [sizeof=1, dsize=0, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct _Save_errno
+         0 |   int _M_errno
+           | [sizeof=4, dsize=4, align=4,
+           |  nvsize=4, nvalign=4]
+
+*** Dumping AST Record Layout
+         0 | struct std::is_same<long double, int> (empty)
+         0 |   struct std::integral_constant<_Bool, false> (base) (empty)
+           | [sizeof=1, dsize=0, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Dumping AST Record Layout
+         0 | struct _Save_errno
+         0 |   int _M_errno
+           | [sizeof=4, dsize=4, align=4,
+           |  nvsize=4, nvalign=4]
+
+*** Dumping AST Record Layout
+         0 | struct _Save_errno
+         0 |   int _M_errno
+           | [sizeof=4, dsize=4, align=4,
+           |  nvsize=4, nvalign=4]
+
+*** Dumping AST Record Layout
+         0 | struct _Save_errno
+         0 |   int _M_errno
+           | [sizeof=4, dsize=4, align=4,
+           |  nvsize=4, nvalign=4]
+
+*** Dumping AST Record Layout
+         0 | struct _Save_errno
+         0 |   int _M_errno
+           | [sizeof=4, dsize=4, align=4,
+           |  nvsize=4, nvalign=4]
+
+*** Dumping AST Record Layout
+         0 | struct _Save_errno
+         0 |   int _M_errno
+           | [sizeof=4, dsize=4, align=4,
+           |  nvsize=4, nvalign=4]
+
+*** Dumping AST Record Layout
+         0 | struct _Save_errno
+         0 |   int _M_errno
+           | [sizeof=4, dsize=4, align=4,
+           |  nvsize=4, nvalign=4]
+
+*** Dumping AST Record Layout
+         0 | struct _Save_errno
+         0 |   int _M_errno
+           | [sizeof=4, dsize=4, align=4,
+           |  nvsize=4, nvalign=4]
+
+*** Dumping AST Record Layout
+         0 | struct _Save_errno
+         0 |   int _M_errno
+           | [sizeof=4, dsize=4, align=4,
+           |  nvsize=4, nvalign=4]
